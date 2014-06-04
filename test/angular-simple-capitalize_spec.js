@@ -1,22 +1,16 @@
 describe('angular-simple-capitalize', function () {
   beforeEach(module('bv.simple-capitalize'));
 
-  var $scope;
-
-  beforeEach(inject(function ($rootScope) {
-    $scope = $rootScope.$new();
+  it('returns the capitalized version of the first', inject(function(capitalizeFilter) {
+    expect(capitalizeFilter('hello')).toBe('Hello');
   }));
 
-  // happy path(s)
-  it('', function () {
-  });
+  it('returns an empty string if null', inject(function(capitalizeFilter) {
+    expect(capitalizeFilter(null)).toBe('');
+  }));
 
-  // null input path
-  it('', function () {
-  });
-
-  // wrong type path
-  it('', function () {
-  });
-
+  it('returns an empty string if not a string', inject(function(capitalizeFilter) {
+    expect(capitalizeFilter(0)).toBe('');
+    expect(capitalizeFilter({})).toBe('');
+  }));
 });
